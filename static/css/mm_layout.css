@@ -1,0 +1,766 @@
+[class^=item_]{
+	height: 100%;
+}
+[class^=item_]::before,[class^=item_]::after {
+	display: block;
+	content: "";
+	clear: both;
+	float: none;
+}
+#app {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+
+.mm_page {
+	height: 100%;
+	overflow: auto;
+}
+
+.mm_warp {
+	clear: both;
+	float: none;
+}
+
+main {
+	margin-bottom: 2.5rem;
+	transition: all 0.5s ease-in-out;
+}
+
+.mm_page>header {
+	min-height: var(--height_big);
+	display: block;
+	position: absolute;
+	z-index: 10;
+	right: 0;
+	top: 0;
+	width: 100%;
+	transition: all 0.5s ease-in-out;
+}
+
+.mm_page>header~main {
+	margin-top: 2.5rem;
+}
+
+.mm_page>footer {
+	min-height: var(--height_small);
+	display: block;
+	position: absolute;
+	z-index: 10;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	transition: all 0.5s ease-in-out;
+}
+
+.mm_side .mm_warp {
+	position: absolute;
+	z-index: 32;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 12rem;
+	white-space: nowrap;
+	transition: all 0.5s ease-in-out;
+}
+
+.mm_view {
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+main .mm_view {
+	overflow-x: auto;
+}
+
+.mm_view::-webkit-scrollbar {
+	display: none;
+}
+
+
+.mm_table img {
+	max-height: 5rem;
+}
+
+.mm_table .btn_open {
+	width: 1.5rem;
+	line-height: 1.5rem;
+	height: 1.5rem;
+	border: none;
+	background: none;
+	text-align: center;
+	padding: 0;
+}
+
+.mm_table .fa-caret-right {
+	transform: rotate(0deg);
+	transition: transform ease-in-out 0.5s;
+}
+
+.mm_table .open .fa-caret-right {
+	transform: rotate(90deg);
+}
+
+.mm_table .sub {
+	background: rgba(0, 0, 0, 0.02);
+}
+
+.mm_table .sub .btn_open {
+	margin-left: 1.5rem;
+}
+
+.mm_table .no_sub .btn_open {
+	opacity: 0.5;
+}
+
+
+header.hide-x {
+	top: -100%;
+}
+
+footer.hide-x {
+	bottom: -100%;
+}
+
+
+.mask {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	display: block;
+	background-color: var(--color_mask);
+	transition: opacity .5s ease;
+	z-index: 31;
+}
+
+.hide-x .mask {
+	width: 0;
+	height: 0;
+	opacity: 0;
+}
+
+/* 栅格 */
+.mm_container {
+	width: 100%;
+	max-width: 77rem;
+	margin-right: auto;
+	margin-left: auto
+}
+
+.mm_row {
+	display: -ms-flexbox;
+	display: flex;
+	-ms-flex-wrap: wrap;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: stretch;
+}
+
+.mm_grid {
+	max-width: 76rem;
+	margin: 0 auto;
+	position: relative;
+	flex-wrap: wrap;
+	display: flex;
+	align-items: stretch;
+	justify-content: start;
+	justify-items: stretch;
+}
+
+.mm_col {
+	max-width: 100%;
+}
+
+/**
+ * 卡片
+ */
+.mm_card {
+	border-radius: var(--radius_small);
+	height: calc(100% - var(--margin_small) * 2);
+	margin: var(--margin_small);
+	overflow: hidden;
+}
+
+.card_head::before,
+.card_head::after,
+.card_body::before,
+.card_body::after,
+.card_foot::before,
+.card_foot::after {
+	content: "";
+	display: block;
+	float: none;
+	clear: both;
+}
+
+.card_body {
+	position: relative;
+}
+
+.card_head {
+	position: relative;
+	padding: var(--padding_mini) var(--padding_base);
+}
+
+.card_head~.card_body {
+	border-top: 1px solid rgba(125, 125, 125, 0.25);
+}
+
+.card_foot {
+	position: relative;
+	padding: var(--padding_mini) var(--padding_base);
+}
+
+/* 列表 */
+[class^=list_],
+.mm_list,
+.mm_info {
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: stretch;
+	justify-content: flex-start;
+}
+
+.mm_list>*,
+.mm_info>* {
+	display: block;
+	float: left;
+	list-style: none;
+	position: relative;
+	min-width: 8.333333%;
+}
+
+ul.mm_list li {
+	list-style: none;
+	float: left;
+	overflow: hidden;
+}
+
+ol.mm_list {
+	list-style-type: none;
+	counter-reset: step;
+	counter-increment: step 0;
+	padding-left: 2.75rem;
+}
+
+ol.mm_list li::before {
+	content: counter(step);
+	counter-increment: step;
+	position: absolute;
+	left: -1.75rem;
+	top: 50%;
+	display: block;
+	width: 1.125rem;
+	line-height: 1.125rem;
+	text-align: center;
+	border-radius: 0.125rem;
+	transform: translateY(-50%);
+	letter-spacing: 0;
+	font-size: var(--font_mini);
+	height: 1.125rem;
+}
+
+/* ===  布局控制  === */
+.mm_item {
+	position: relative;
+	width: 100%;
+}
+
+.mm_item:before, .mm_item:after {
+	content: "";
+	display: block;
+	float: none;
+	clear: both;
+}
+
+.media {
+	padding: var(--padding_mini);
+}
+
+.doc {
+	padding: var(--padding_mini);
+	overflow: hidden;
+	height: 100%;
+}
+
+.item-tb .media~.doc {
+	padding-top: 0;
+}
+
+.mm_item .title{
+	overflow: hidden;
+}
+.mm_item .content {
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 1;
+	font-size: 0.875rem;
+}
+
+.item-ltb .media {
+	float: left;
+	height: 100%;
+}
+
+.item-rtb .media {
+	float: right;
+	height: 100%;
+}
+
+.item-ll .media,
+.item-lr .media {
+	float: left;
+}
+
+.item-ll .title,
+.item-lr .title {
+	float: left;
+	margin-right: var(--margin_small);
+	min-width: 2rem;
+}
+
+.item-lr .content {
+	text-align: right;
+}
+
+.item-rl .media,
+.item-rr .media {
+	float: right;
+}
+
+.item-rl .title {
+	float: left;
+	margin-right: var(--margin_small);
+}
+
+.item-rr .title {
+	float: right;
+}
+
+.mobile .mm_item {
+	border-bottom: 1px solid var(--color_border);
+	margin-bottom: -1px;
+}
+
+.mm_group {
+	width: 100%;
+	display: flex;
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	align-items: stretch;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+.mm_group>* {
+	margin-right: -1px;
+	flex: 1;
+	float: left;
+	border-radius: 0 !important;
+	white-space: nowrap;
+}
+
+.mm_group>*:focus {
+	z-index: 20;
+}
+
+.mm_group>*:first-child {
+	margin-left: -1px;
+}
+
+.mm_group>input~.mm_btn,
+.mm_group>input~[class*=mm_btn_] {
+	flex: inherit;
+}
+
+.mm_group>span,
+.mm_group>.unit,
+.mm_group>.title {
+	flex: inherit;
+	height: var(--height_base);
+	line-height: var(--height_base);
+	padding-left: var(--padding_base);
+	padding-right: var(--padding_base);
+	background-color: var(--color_light);
+	border: 1px solid var(--color_border);
+	font-size: 0.75rem;
+	text-align: center;
+}
+
+
+.group-0>*:first-child {
+	border-top-left-radius: 0 !important;
+	border-bottom-left-radius: 0 !important;
+}
+
+.group-0>*:last-child {
+	border-top-right-radius: 0 !important;
+	border-bottom-right-radius: 0 !important;
+}
+
+.group-1>*:first-child {
+	border-top-left-radius: .25rem !important;
+	border-bottom-left-radius: .25rem !important;
+}
+
+.group-1>*:last-child {
+	border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
+}
+
+.group-2>*:first-child {
+	border-top-left-radius: .5rem !important;
+	border-bottom-left-radius: .5rem !important;
+}
+
+.group-2>*:last-child {
+	border-top-right-radius: .5rem !important;
+	border-bottom-right-radius: .5rem !important;
+}
+
+
+
+.mm_info .mm_item {
+	border-top: none;
+	border-bottom: none;
+	overflow: hidden;
+}
+
+.mm_info .title {
+	display: flex;
+	align-items: center;
+}
+
+.mm_info .title::after,
+.mm_info .content::after {
+	content: "";
+	display: block;
+	border-bottom: 1px solid var(--color_border);
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+.mm_info.item-rtb.img-base .media~.title::after,
+.mm_info.item-rtb.img-base .media~.content::after {
+	width: calc(100% - var(--img_size_base) - var(--margin_base) * 2 - var(--padding_base));
+}
+
+.mm_info.item-rtb.img-big .media~.title::after,
+.mm_info.item-rtb.img-big .media~.content::after {
+	width: calc(100% - var(--img_size_big) - var(--margin_base) * 2 - var(--padding_base));
+}
+
+.mm_info .content img {
+	max-width: 16.25rem;
+	max-height: 16.25rem;
+}
+
+.item-ll.img-small .title,
+.item-lr.img-small .title,
+.item-ll.img-small .content,
+.item-lr.img-small .content {
+	line-height: var(--height_base);
+}
+
+
+.info-base .mm_item {
+	display: flex;
+}
+
+.info-base .mm_item .title {
+	min-width: 5rem;
+}
+
+.info-base .mm_item .content {
+	color: var(--color_default);
+	line-height: var(--height_base);
+}
+
+.info-base .mm_item .mm_grid {
+	width: 90%;
+}
+
+/* ===  表单  === */
+.mobile input[type=range],
+.mobile input[type=text],
+.mobile input[type=number],
+.mobile input[type=password],
+.mobile input[type=tel],
+.mobile input[type=email],
+.mobile input[type=date],
+.mobile input[type=datetime],
+.mobile input[type=time],
+.mobile input[type=datetime-local],
+.mobile input[type=month],
+.mobile input[type=week],
+.mobile input[type=url] {
+	width: 100%;
+	border: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.mobile textarea {
+	border: none;
+	padding: var(--padding_mini) 0;
+	min-width: auto;
+}
+
+.mobile select~input[type=text],
+.mobile select~input[type=number],
+.mobile select~input[type=tel] {
+	border: 1px solid var(--color_border);
+	padding-left: var(--padding_small);
+	padding-right: var(--padding_small);
+	width: initial;
+}
+
+.card-full {
+	margin: var(--margin_small);
+	height: calc(100% - var(--margin_base));
+}
+
+.table-sm td,
+.table-sm th {
+	padding: .25rem var(--padding_mini)
+}
+
+
+/* ===  模态窗  === */
+.mm_modal {
+	position: fixed;
+	z-index: 30;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	transform: translate(-100%, -100%);
+}
+
+.mm_modal .mask {
+	transition: all .2s ease-in-out;
+}
+
+.mm_modal.show {
+	transform: translate(0, 0);
+}
+
+.mm_modal .mm_body {
+	background: #fff;
+}
+
+.mm_modal .popup {
+	position: absolute;
+	z-index: 32;
+}
+
+/* 所有CSS属性都拥有过渡属性，动画持续时间3s 延迟2s触发 linear的触发函数 */
+.trans {
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	-ms-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+.show [class*=from_] {
+	position: absolute;
+	z-index: 40;
+	width: 100%;
+}
+
+.show .from_default {
+	max-width: 30rem;
+	min-height: 7.5rem;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) !important;
+}
+
+.from_left {
+	top: 0;
+	bottom: 0;
+	left: 0;
+	height: 100%;
+	max-width: 18.75rem;
+	transform: translate(-100%, 0);
+}
+
+.from_right {
+	top: 0;
+	bottom: 0;
+	right: 0;
+	height: 100%;
+	max-width: 18.75rem;
+	transform: translate(100%, 0);
+}
+
+.from_top {
+	top: 0;
+	left: 0;
+	right: 0;
+	transform: translate(0, -100%);
+}
+
+.from_bottom {
+	bottom: 0;
+	left: 0;
+	right: 0;
+	transform: translate(0, 100%);
+}
+
+.from_center {
+	top: 50%;
+	left: 50%;
+	width: 25%;
+	max-width: 30rem;
+	transform: translate(-50%, -50%);
+}
+
+.show .from_left,
+.show .from_right,
+.show .from_top,
+.show .from_bottom,
+.show .from_center {
+	-webkit-transition: all .2s linear;
+	-moz-transition: all .2s linear;
+	-ms-transition: all .2s linear;
+	-o-transition: all .2s linear;
+	transition: all .2s linear;
+}
+
+.show .from_left,
+.show .from_right,
+.show .from_top,
+.show .from_bottom {
+	transform: translate(0, 0);
+}
+
+.show .from_center {
+	width: 100%;
+}
+
+.value label {
+	margin-right: var(--margin_base);
+	display: block;
+	float: left;
+}
+
+.mobile .value label {
+	float: none;
+}
+
+.mm_form dt {
+	line-height: 2rem;
+}
+
+.mm_form dd {
+	line-height: 1;
+}
+
+.mm_icon {
+	background: center center no-repeat;
+	background-size: 100%;
+	position: relative;
+}
+
+.img-auto .mm_icon {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-top: 100%;
+}
+.img-auto .img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+@media (max-width:576px) {
+	.mm_side.hide-x .mm_warp {
+		left: -100%;
+	}
+
+	.mm_form dt {
+		float: none;
+		padding-bottom: 0;
+	}
+
+	.mm_form dd {
+		float: none;
+		padding-top: 0;
+	}
+}
+
+@media (min-width:576px) {
+
+	.mm_side~header,
+	.mm_side~footer {
+		width: calc(100% - 12rem);
+	}
+
+	.mm_side~main {
+		margin-left: 12rem;
+	}
+
+	.mm_side~header .mm_container,
+	.mm_side~footer .mm_container,
+	.mm_side~main .mm_container {
+		max-width: initial;
+	}
+
+	.mm_side~main .mm_row {
+		justify-content: left;
+	}
+
+	.mm_side.fold~header,
+	.mm_side.fold~footer {
+		width: calc(100% - 2.5rem);
+	}
+
+	.mm_side.fold~main {
+		margin-left: 2.5rem;
+	}
+
+	.mm_side.fold .mm_warp {
+		width: 2.5rem;
+	}
+
+	.mm_side.fold .btn:after {
+		content: none;
+	}
+
+	.mm_side.fold .box {
+		display: none;
+		position: absolute;
+		left: 100%;
+		top: 0;
+		width: 12rem;
+		background: #fff;
+		border: 1px solid rgba(125, 125, 125, 0.25);
+		box-shadow: 0 0.25rem 0.5rem 0 rgba(7, 17, 27, 0.1);
+	}
+
+	.mm_side.fold .mm_item:hover .box {
+		display: block;
+		max-height: initial;
+	}
+
+	.mm_side.fold .box a:hover {
+		background: var(--color_primary);
+	}
+}
