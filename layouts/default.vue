@@ -1,5 +1,5 @@
 <template>
-  <div class="app">
+  <div class="app" id="app">
     <Nuxt />
   </div>
 </template>
@@ -8,8 +8,7 @@
 <script>
   export default {
     data() {
-      return {
-      }
+      return {}
     },
     methods: {},
     created() {}
@@ -18,5 +17,4 @@
 
 
 <style>
-  
 </style>

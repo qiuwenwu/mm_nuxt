@@ -39,40 +39,8 @@ import control_switch from "../components/mm/control/control_switch.vue"
 import control_file from "../components/mm/control/control_file.vue"
 import control_textarea from "../components/mm/control/control_textarea.vue"
 
-
 export default {
 	install(Vue, options) {
-		function bindResize(tag, target, func) {
-			var width_init = $(target).width();
-			var el = $(tag);
-			var x = 0;
-			var y = 0;
-			el.mousedown(function(e) {
-				x = e.clientX - el.offset().left;
-				el.setCapture ? (el.setCapture(), el.onmousemove = function(ev) {
-					mouseMove(ev || event);
-				}, el.onmouseup = mouseUp) : $(document).bind("mousemove", mouseMove).bind("mouseup", mouseUp);
-				e.preventDefault();
-			});
-
-			function mouseMove(e) {
-				var width = e.clientX - x;
-
-				if (width >= width_init) {
-					$(target).width(width + "px");
-
-					if (func) {
-						func(width);
-					}
-				}
-			}
-
-			function mouseUp() {
-				el.releaseCapture ? (el.releaseCapture(), el.onmousemove = el.onmouseup = null) : $(document).unbind("mousemove",
-					mouseMove).unbind("mouseup", mouseUp);
-			}
-		}
-		
 		//自定义拖动
 		Vue.directive('drag',
 			function(el, binding) {

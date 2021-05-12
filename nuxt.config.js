@@ -26,14 +26,14 @@ export default {
         type: 'image/x-icon',
         href: '/favicon.ico'
       },
-      {
-        rel: 'stylesheet',
-        href: '/skins/ui/oxide/skin.min.css'
-      },
-      {
-        rel: 'stylesheet',
-        href: '/skins/ui/oxide/content.min.css'
-      },
+      // {
+      //   rel: 'stylesheet',
+      //   href: '/skins/ui/oxide/skin.min.css'
+      // },
+      // {
+      //   rel: 'stylesheet',
+      //   href: '/skins/ui/oxide/content.min.css'
+      // },
       {
         rel: 'stylesheet',
         href: '/css/swiper.min.css'
@@ -72,6 +72,10 @@ export default {
       },
       {
         rel: 'stylesheet',
+        href: '/css/common.css'
+      },
+      {
+        rel: 'stylesheet',
         href: '/css/mm_theme.css'
       }
     ]
@@ -86,6 +90,7 @@ export default {
     '@/plugins/element-ui',
     '@/plugins/core',
     '@/plugins/mm_sdk',
+    '@/plugins/lang',
     '@/plugins/component',
     {
       src: '@/plugins/commom.js',

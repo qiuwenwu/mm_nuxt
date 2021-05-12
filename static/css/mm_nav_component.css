@@ -88,7 +88,7 @@
 .nav_side .modal_body {
 	position: absolute;
 	height: 100%;
-	min-width: 12.5rem;
+	width: 12.5rem;
 	top: 0;
 	left: -100%;
 	padding-top: 4rem;

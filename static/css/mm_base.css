@@ -458,10 +458,10 @@ input:invalid {
 button,
 select {
 	text-transform: none;
-	height: var(--height_base);
-	line-height: var(--height_base);
 	cursor: pointer;
 	border: 1px solid var(--color_border);
+	height: var(--height_base);
+	line-height: var(--height_base);
 	padding-left: var(--padding_small);
 	padding-right: var(--padding_small);
 	border-radius: var(--radius_small);
