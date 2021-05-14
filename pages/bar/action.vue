@@ -49,7 +49,6 @@
 		},
 		methods: {
 			func_action(o) {
-				console.log("func_page");
 				console.log(o);
 			}
 		}

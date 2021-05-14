@@ -21,10 +21,7 @@
 				<mm_container>
 					<mm_row>
 						<mm_col width="100">
-							<nav_side>
-								<bar_user></bar_user>
-								<list_image></list_image>
-							</nav_side>
+							<nav_side></nav_side>
 						</mm_col>
 					</mm_row>
 				</mm_container>

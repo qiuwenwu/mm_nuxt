@@ -1,476 +1,686 @@
 <template>
-  <div class="page_root" id="root_index">
-    <header>
-      <!-- LOGO -->
-      <expand_sptite :pos="{ x: 16, y: 16 }">
-        <button class="mm_btn btn_link">
-          <img style="height: 2.5rem;" src="/img/logo.png" alt="">
-          <span style="font-weight: 600;color: #000; display: block;font-size: 0.875rem;">SHELL</span>
-        </button>
-      </expand_sptite>
-
-      <!-- 左边队列 -->
-      <expand_sptite class="tb" v-for="(o, i) in list_left" :key="o.name + i" :client="o.client" :name="o.name"
-        :size="o.size" :pos="o.pos" :align="o.align" :tag="o.tag" :type="o.type" :text="$t('root.btn_' + o.name)"
-        :src="o.src" background="o.background" :z-index="o.zIndex" @click.native="event_click(o.name)">
-      </expand_sptite>
-
-      <!-- 连接钱包 -->
-      <expand_sptite :pos="{ x: 8, y: 16 }" :align="{ x: 'right', y: 'top' }">
-        <button class="mm_btn btn_link">
-          <img style="height: 3rem;" src="/img/metamask.png" alt="">
-          <span>{{ $t('root.btn_connect') }}</span>
-        </button>
-      </expand_sptite>
-
-      <!-- 右边队列 -->
-      <expand_sptite class="tb" v-for="(o, i) in list_right" :key="o.name + i" :client="o.client" :name="o.name"
-        :size="o.size" :pos="o.pos" :align="o.align" :tag="o.tag" :type="o.type" :text="$t('root.btn_' + o.name)"
-        :src="o.src" background="o.background" :z-index="o.zIndex" @click.native="event_click(o.name)">
-      </expand_sptite>
-
-      <!-- 语言 -->
-      <expand_sptite :pos="{ x: 0, y: 128 }" :align="{ x: 'right', y: 'bottom' }">
-        <div class="lang" @click="select_lang()">
-          <img style="height: 1.5rem;" :src="'/img/' + lang_type + '.png'" alt="">
-          <span>{{ lang_type }}</span>
-        </div>
-      </expand_sptite>
-
-      <!-- 底部队列 -->
-      <expand_sptite v-for="(o, i) in list_bottom" :key="o.name + i" :client="o.client" :name="o.name" :size="o.size"
-        :pos="o.pos" :align="o.align" :tag="o.tag" :type="o.type" :text="o.text" :src="o.src" background="o.background"
-        :z-index="o.zIndex">
-      </expand_sptite>
-    </header>
-
-    <!-- 加载  -->
-    <main>
-      <div class="bg">
-        <img class="bg_flash left" src="/img/flash.gif" alt="">
-        <img class="bg_flash right" src="/img/flash.gif" alt="">
-        <img class="bg_img" src="/img/bg.jpg" alt="">
-        <!--        <expand_sptite :pos="{ x: 140, y: 0 }" :align="{ x: 'right', y: 'center' }" v-drag>
-          <img src="/img/go.gif" alt="">
-        </expand_sptite> -->
-      </div>
-    </main>
-
-    <mm_modal v-model="show_notice" mask="true" :display="'default'">
-      <div class="bg_notice center" @click="show = false">
-        <img class="img_notice" src="/img/bg_notice.png" />
-        <div class="notice" v-html="'Coming<br/>soon'">
-        </div>
-      </div>
-    </mm_modal>
-
-    <mm_modal v-model="show_nft" mask="true" :display="'default'">
-      <nft></nft>
-    </mm_modal>
-
-    <mm_modal v-model="show_pool" mask="true" :display="'default'">
-      <pool></pool>
-    </mm_modal>
-
-    <mm_modal v-model="show_bag" mask="true" :display="'default'">
-      <bag></bag>
-    </mm_modal>
-
-    <mm_modal v-model="show_update" mask="true" :display="'default'">
-      <mm_row>
-        <div class="col-12 col-md-4">
-          <!-- 锻造 -->
-          <update_forge></update_forge>
-        </div>
-
-        <div class="col-12 col-md-4">
-          <!-- 合成 -->
-          <update_compose></update_compose>
-        </div>
-
-        <div class="col-12 col-md-4">
-          <!-- 分解 -->
-          <update_resolve></update_resolve>
-        </div>
-      </mm_row>
-
-    </mm_modal>
-
-    <mm_modal v-model="show_invite" mask="true" :display="'default'">
-      <invite></invite>
-    </mm_modal>
-  </div>
+	<mm_page id="page_root" class="mobile">
+		<header>
+			<mm_warp>
+				<mm_container>
+					<mm_row>
+						<mm_col width="100">
+							<mm_view>
+								<h3>
+									<span>MM-UI组件示例</span>
+									<router-link to="/design" class="arrow" style="position: relative;">
+										<span>点击查看</span> <span class="font_primary">设计规范</span>
+									</router-link>
+								</h3>
+							</mm_view>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
+		</header>
+		<main>
+			<mm_warp>
+				<mm_container>
+					<mm_row class="row-lg-3 row-md-2 row-sm-1">
+						<mm_col width="100">
+							<div class="center">基础组件</div>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">内容容器</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in content" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">布局容器</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in layout" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">控件</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in control" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+					<mm_row class="row-lg-3 row-md-2 row-sm-1">
+						<mm_col width="100">
+							<div class="center mt">复合组件</div>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">栏</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in bar" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">列表</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in list" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">导航</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in nav" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">轮播</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in swiper" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">图表</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in chart" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">拓展</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in expand" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">表单</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in form" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+						<mm_col>
+							<mm_card>
+								<div class="card_head">表格</div>
+								<div class="card_body">
+									<mm_list :col="1" class="item-lr content-right">
+										<item_base class="arrow" v-for="(o, idx) in table" :key="idx" :obj="o"
+											:viewmodel="{content:'name'}"
+											:class="{ 'font_success': o.progress == 100, 'font_info': o.progress > 0 && o.progress < 100 }">
+										</item_base>
+									</mm_list>
+								</div>
+							</mm_card>
+						</mm_col>
+					</mm_row>
+				</mm_container>
+			</mm_warp>
+		</main>
+	</mm_page>
 </template>
 
 <script>
-  import expand_sptite from "@/components/mm/expand/expand_sptite.vue";
-  import nft from "@/components/diy/nft.vue";
-  import bag from "@/components/diy/bag.vue";
-  import pool from "@/components/diy/pool.vue";
-  import update_forge from "@/components/diy/update_forge.vue";
-  import update_compose from "@/components/diy/update_compose.vue";
-  import update_resolve from "@/components/diy/update_resolve.vue";
-  import invite from "@/components/diy/invite.vue";
-
-  export default {
-    components: {
-      expand_sptite,
-      nft,
-      bag,
-      pool,
-      update_forge,
-      invite
-    },
-    data() {
-      return {
-        show_update: false,
-        show_notice: false,
-        show_nft: false,
-        show_bag: false,
-        show_pool: false,
-        show_invite: false,
-        list_left: [{
-            name: "nft",
-            tag: "img",
-            src: "/img/nft.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 100
-            },
-            align: {
-              x: "left",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "盲合"
-          },
-          {
-            name: "pool",
-            tag: "img",
-            src: "/img/pool.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 180
-            },
-            align: {
-              x: "left",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "矿池"
-          },
-          {
-            name: "auction",
-            tag: "img",
-            src: "/img/auction.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 260
-            },
-            align: {
-              x: "left",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "拍卖"
-          },
-          {
-            name: "ranking",
-            tag: "img",
-            src: "/img/ranking.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 340
-            },
-            align: {
-              x: "left",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "排名"
-          },
-          {
-            name: "statis",
-            tag: "img",
-            src: "/img/statis.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 420
-            },
-            align: {
-              x: "left",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "统计"
-          }
-        ],
-        list_right: [{
-            name: "bag",
-            tag: "img",
-            src: "/img/bag.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 100
-            },
-            align: {
-              x: "right",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "背包"
-          },
-          {
-            name: "update",
-            tag: "img",
-            src: "/img/update.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 180
-            },
-            align: {
-              x: "right",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "升级"
-          },
-          {
-            name: "invite",
-            tag: "img",
-            src: "/img/invite.png",
-            size: {
-              width: "44",
-              height: "44"
-            },
-            pos: {
-              x: 16,
-              y: 260
-            },
-            align: {
-              x: "right",
-              y: "top"
-            },
-            zIndex: 101,
-            client: "pad",
-            text: "邀请"
-          }
-        ],
-        list_bottom: [{
-            name: "telegram",
-            tag: "img",
-            src: "/img/telegram.png",
-            size: {
-              width: "32",
-              height: "32"
-            },
-            pos: {
-              x: -48,
-              y: 24
-            },
-            align: {
-              x: "center",
-              y: "bottom"
-            },
-            zIndex: 101
-          },
-          {
-            name: "twitter",
-            tag: "img",
-            src: "/img/twitter.png",
-            size: {
-              width: "32",
-              height: "32"
-            },
-            pos: {
-              x: 0,
-              y: 24
-            },
-            align: {
-              x: "center",
-              y: "bottom"
-            },
-            zIndex: 101
-          },
-          {
-            name: "facebook",
-            tag: "img",
-            src: "/img/facebook.png",
-            size: {
-              width: "32",
-              height: "32"
-            },
-            pos: {
-              x: 48,
-              y: 24
-            },
-            align: {
-              x: "center",
-              y: "bottom"
-            },
-            zIndex: 101
-          }
-        ]
-      }
-    },
-    methods: {
-      event_click(name) {
-        var ne = name.toLocaleLowerCase()
-        switch (ne) {
-          case "pool":
-          case "nft":
-            this['show_' + ne] = true;
-            break;
-          case "bag":
-          case "update":
-          case "invite":
-            this['show_' + ne] = true;
-            break;
-          case "ranking":
-          case "auction":
-          case "statis":
-            this.show_notice = true;
-            break;
-        }
-      },
-      select_lang(lang_type) {
-        if (this.lang_type === 'en') {
-          this.set_lang('zh')
-        } else {
-          this.set_lang('en')
-        }
-      }
-    }
-  }
+	export default {
+		data() {
+			return {
+				bar: [{
+						title: "操作栏",
+						name: "bar_action",
+						url: "/bar/action",
+						progress: 0
+					},
+					{
+						title: "广告栏",
+						name: "bar_ad",
+						url: "/bar/ad",
+						progress: 10
+					},
+					{
+						title: "购买栏",
+						name: "bar_buy",
+						url: "/bar/buy",
+						progress: 0
+					},
+					{
+						title: "聊天栏",
+						name: "bar_chat",
+						url: "/bar/chat",
+						progress: 0
+					},
+					{
+						title: "结算栏",
+						name: "bar_count",
+						url: "/bar/count",
+						progress: 0
+					},
+					{
+						title: "筛选栏",
+						name: "bar_filter",
+						url: "/bar/filter",
+						progress: 10
+					},
+					{
+						title: "菜单栏",
+						name: "bar_menu",
+						url: "/bar/menu",
+						progress: 10
+					},
+					{
+						title: "搜索栏",
+						name: "bar_search",
+						url: "/bar/search",
+						progress: 0
+					},
+					{
+						title: "排序栏",
+						name: "bar_sort",
+						url: "/bar/sort",
+						progress: 10
+					},
+					{
+						title: "标签栏",
+						name: "bar_tab",
+						url: "/bar/tab",
+						progress: 100
+					},
+					{
+						title: "标题栏",
+						name: "bar_title",
+						url: "/bar/title",
+						progress: 10
+					},
+					{
+						title: "工具栏",
+						name: "bar_tool",
+						url: "/bar/tool",
+						progress: 10
+					},
+					{
+						title: "用户栏",
+						name: "bar_user",
+						url: "/bar/user",
+						progress: 0
+					}
+				],
+				chart: [{
+						title: "条形图",
+						name: "chart_bar",
+						url: "/chart/bar",
+						progress: 0
+					},
+					{
+						title: "深度图",
+						name: "chart_depth",
+						url: "/chart/depth",
+						progress: 0
+					},
+					{
+						title: "K线图",
+						name: "chart_k",
+						url: "/chart/k",
+						progress: 0
+					},
+					{
+						title: "条形图",
+						name: "chart_line",
+						url: "/chart/line",
+						progress: 0
+					},
+					{
+						title: "仪表盘",
+						name: "chart_panel",
+						url: "/chart/panel",
+						progress: 0
+					},
+					{
+						title: "饼形图",
+						name: "chart_pie",
+						url: "/chart/pie",
+						progress: 0
+					}
+				],
+				content: [{
+						title: "按钮",
+						name: "mm_btn",
+						url: "/content/btn",
+						progress: 100
+					},
+					{
+						title: "图标",
+						name: "mm_icon",
+						url: "/content/icon",
+						progress: 100
+					},
+					{
+						title: "加载",
+						name: "mm_loading",
+						url: "/content/loading",
+						progress: 100
+					},
+					{
+						title: "颜色",
+						name: "mm_color",
+						url: "/content/color",
+						progress: 100
+					}
+				],
+				layout: [{
+						title: "栅格",
+						name: "mm_row",
+						url: "/layout/grid",
+						progress: 100
+					},
+					{
+						title: "列表",
+						name: "mm_list",
+						url: "/layout/list",
+						progress: 100
+					},
+					{
+						title: "表格",
+						name: "mm_table",
+						url: "/layout/table",
+						progress: 100
+					},
+					{
+						title: "组合框",
+						name: "mm_group",
+						url: "/layout/group",
+						progress: 100
+					},
+					{
+						title: "块",
+						name: "mm_card",
+						url: "/layout/div",
+						progress: 100
+					},
+					{
+						title: "模态窗",
+						name: "mm_modal",
+						url: "/layout/modal",
+						progress: 100
+					}
+				],
+				control: [{
+						title: "复选框",
+						name: "control_checkbox",
+						url: "/control/checkbox",
+						progress: 100
+					},
+					{
+						title: "单选框",
+						name: "control_radio",
+						url: "/control/radio",
+						progress: 100
+					},
+					{
+						title: "输入框",
+						name: "control_input",
+						url: "/control/input",
+						progress: 100
+					},
+					{
+						title: "计数器",
+						name: "control_number",
+						url: "/control/number",
+						progress: 100
+					},
+					{
+						title: "选择框",
+						name: "control_select",
+						url: "/control/select",
+						progress: 100
+					},
+					{
+						title: "开关",
+						name: "control_switch",
+						url: "/control/switch",
+						progress: 100
+					},
+					{
+						title: "反转器",
+						name: "control_reverse",
+						url: "/control/reverse",
+						progress: 100
+					},
+					{
+						title: "分页器",
+						name: "control_pager",
+						url: "/control/pager",
+						progress: 100
+					},
+					{
+						title: "日期选择器",
+						name: "control_date",
+						url: "/control/date",
+						progress: 0
+					},
+					{
+						title: "地址选择器",
+						name: "control_address",
+						url: "/control/address",
+						progress: 0
+					},
+					{
+						title: "富文本编辑器",
+						name: "control_rich",
+						url: "/control/rich",
+						progress: 100
+					}
+				],
+				expand: [{
+						title: "拖拽",
+						name: "expand_drag",
+						url: "/expand/drag",
+						progress: 50
+					},
+					{
+						title: "支付",
+						name: "expand_pay",
+						url: "/expand/pay",
+						progress: 0
+					},
+					{
+						title: "源代码",
+						name: "expand_pre",
+						url: "/expand/pre",
+						progress: 100
+					},
+					{
+						title: "二维码",
+						name: "expand_qrcode",
+						url: "/expand/qrcode",
+						progress: 100
+					},
+					{
+						title: "精灵",
+						name: "expand_sptite",
+						url: "/expand/sptite",
+						progress: 100
+					}
+				],
+				nav: [{
+						title: "主导航",
+						name: "nav_main",
+						url: "/nav/main",
+						progress: 100
+					},
+					{
+						title: "侧边导航",
+						name: "nav_side",
+						url: "/nav/side",
+						progress: 100
+					},
+					{
+						title: "顶部导航",
+						name: "nav_top",
+						url: "/nav/top",
+						progress: 0
+					},
+					{
+						title: "底部导航",
+						name: "nav_bottom",
+						url: "/nav/bottom",
+						progress: 100
+					},
+					{
+						title: "快捷导航",
+						name: "nav_quick",
+						url: "/nav/quick",
+						progress: 100
+					},
+					{
+						title: "用户导航",
+						name: "nav_user",
+						url: "/nav/user",
+						progress: 100
+					}
+				],
+				form: [{
+						title: "注册",
+						name: "form_register",
+						url: "/form/register",
+						progress: 0
+					},
+					{
+						title: "登录",
+						name: "form_login",
+						url: "/form/login",
+						progress: 0
+					},
+					{
+						title: "找回密码",
+						name: "form_forgot",
+						url: "/form/forgot",
+						progress: 0
+					},
+					{
+						title: "修改密码",
+						name: "form_password",
+						url: "/form/password",
+						progress: 0
+					}
+				],
+				list: [{
+						title: "基础列表",
+						name: "list_base",
+						url: "/list/base",
+						progress: 100
+					},
+					{
+						title: "图片列表",
+						name: "list_image",
+						url: "/list/image",
+						progress: 100
+					},
+					{
+						title: "文章列表",
+						name: "list_article",
+						url: "/list/article",
+						progress: 100
+					},
+					{
+						title: "通讯录列表",
+						name: "list_contact",
+						url: "/list/contact",
+						progress: 100
+					},
+					{
+						title: "消息列表",
+						name: "list_message",
+						url: "/list/message",
+						progress: 100
+					},
+					{
+						title: "新闻列表",
+						name: "list_news",
+						url: "/list/news",
+						progress: 100
+					},
+					{
+						title: "号码列表",
+						name: "list_number",
+						url: "/list/number",
+						progress: 100
+					},
+					{
+						title: "商品列表",
+						name: "list_goods",
+						url: "/list/goods",
+						progress: 100
+					},
+					{
+						title: "问答列表",
+						name: "list_question",
+						url: "/list/question",
+						progress: 100
+					},
+					{
+						title: "用户列表",
+						name: "list_user",
+						url: "/list/user",
+						progress: 100
+					},
+					{
+						title: "视频列表",
+						name: "list_video",
+						url: "/list/video",
+						progress: 100
+					},
+					{
+						title: "音乐列表",
+						name: "list_music",
+						url: "/list/music",
+						progress: 100
+					}
+				],
+				swiper: [{
+						title: "卡片轮播",
+						name: "swiper_card",
+						url: "/swiper/card",
+						progress: 100
+					},
+					{
+						title: "旋转卡片轮播",
+						name: "swiper_rotate_card",
+						url: "/swiper/rotate_card",
+						progress: 80
+					},
+					{
+						title: "图片轮播",
+						name: "swiper_image",
+						url: "/swiper/image",
+						progress: 100
+					},
+					{
+						title: "文本轮播",
+						name: "swiper_text",
+						url: "/swiper/text",
+						progress: 100
+					},
+					{
+						title: "页面轮播",
+						name: "swiper_page",
+						url: "/swiper/page",
+						progress: 100
+					},
+					{
+						title: "页面竖直轮播",
+						name: "swiper_vertical_page",
+						url: "/swiper/vertical_page",
+						progress: 100
+					},
+					{
+						title: "菜单轮播",
+						name: "swiper_menu",
+						url: "/swiper/menu",
+						progress: 100
+					}
+				],
+				table: [{
+						title: "货币",
+						name: "table_coin",
+						url: "/table/coin",
+						progress: 0
+					},
+					{
+						title: "股票",
+						name: "table_stock",
+						url: "/table/stock",
+						progress: 0
+					},
+					{
+						title: "挂单",
+						name: "table_resting_order",
+						url: "/table/resting_order",
+						progress: 0
+					},
+					{
+						title: "买卖",
+						name: "table_buy_sell",
+						url: "/table/buy_sell",
+						progress: 0
+					}
+				]
+			}
+		}
+	}
 </script>
 
 <style>
-  #root_index .tb {
-    text-align: center;
-    min-width: 4rem;
-  }
+	#page_root h3 a {
+		font-size: 1rem;
+		float: right;
+		color: #999;
+	}
 
-  #root_index .tb span {
-    display: block;
-    color: #fff;
-    text-shadow: #333 3px 4px 5px;
-    margin-top: -0.75rem;
-  }
+	#page_root h3 .font_info {
+		font-weight: 600;
+	}
 
-  #root_index .bg {
-    position: relative;
-    width: fit-content;
-    z-index: 2;
-  }
-
-  #root_index .bg_flash {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    z-index: 2;
-  }
-
-  #root_index .left {
-    left: 0;
-    top: 0;
-  }
-
-  #root_index .right {
-    right: 0;
-    top: 0;
-  }
-
-  #root_index .bg_img {
-    min-width: 100vw;
-    height: 100vh;
-  }
-
-  #root_index main {
-    overflow-x: scroll;
-  }
-
-  #root_index .btn_link {
-    padding: 0 0.5rem;
-    line-height: initial;
-    height: initial;
-    color: #fff;
-    font-size: 1rem;
-  }
-
-  #root_index .lang {
-    background: rgba(255, 255, 255, 0.5);
-    padding: .25rem .5rem;
-    border-bottom-left-radius: 1rem;
-    border-top-left-radius: 1rem;
-  }
-
-  #root_index .lang span {
-    position: relative;
-    top: 0.1rem;
-  }
-
-  #root_index .bg_notice {
-    position: relative;
-  }
-
-  #root_index .bg_notice img {
-    width: 100%;
-    max-width: calc(100vw - 4rem);
-  }
-
-  #root_index .notice {
-    position: absolute;
-    top: 50%;
-    left: 52%;
-    transform: translate(-50%, -50%);
-    font-size: 2.5rem;
-    color: #fff;
-    text-shadow: #000 3px 4px 5px;
-  }
-
-  #root_index .mm_modal {
-    z-index: 300;
-  }
-
-  @media (max-width:576px) {
-    #root_index .notice {
-      font-size: 1.5rem;
-    }
-  }
+	#page_root h4 {
+		margin: auto;
+		padding-bottom: 1rem;
+	}
 </style>

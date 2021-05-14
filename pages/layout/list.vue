@@ -118,7 +118,7 @@
 				if (n >= arr.length) {
 					n = arr.length;
 				}
-				return arr[n].toString();
+				return arr[n];
 			}
 		}
 	}

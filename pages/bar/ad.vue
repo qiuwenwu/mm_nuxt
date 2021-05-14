@@ -22,14 +22,14 @@
 					<mm_row>
 						<mm_col width="100">
 							<mm_view>
-									<bar_ad class="display-2" col="4" :list="list">
-									</bar_ad>
+								<bar_ad class="display-2" :col="4" :list="list">
+								</bar_ad>
 							</mm_view>
 						</mm_col>
-						<mm_col width="100">
+						<mm_col width="20">
 							<mm_view style="height: 25rem;">
-									<bar_ad class="item-tb img-base" col="1" :list="list">
-									</bar_ad>
+								<bar_ad class="item-tb img-base" :col="1" :list="list">
+								</bar_ad>
 							</mm_view>
 						</mm_col>
 					</mm_row>
@@ -44,7 +44,7 @@
 		data() {
 			return {
 				select: 0,
-				col: "2",
+				col: 2,
 				options: [{
 						name: "1列",
 						value: "1"

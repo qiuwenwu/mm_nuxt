@@ -90,4 +90,7 @@
 </script>
 
 <style scoped>
+	main {
+		overflow: initial;
+	}
 </style>

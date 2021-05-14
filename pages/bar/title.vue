@@ -39,7 +39,6 @@
 		},
 		methods: {
 			func_title(o) {
-				console.log("func_page");
 				console.log(o);
 			}
 		}
