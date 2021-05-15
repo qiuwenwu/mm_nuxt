@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_loading">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -85,6 +85,7 @@
 	}
 	#page_loading .card_body {
 		text-align: center;
+		padding: 1rem;
 	}
 	
 	.mm_loading {

@@ -1,7 +1,7 @@
 <template>
 	<!-- 图片 -->
 	<mm_page id="expand_drag">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>

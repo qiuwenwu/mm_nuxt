@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_radio">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -25,7 +25,7 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_1)">样式一(PC)</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_radio v-model="value" :options="options"></control_radio>
 								</div>
 							</mm_card>
@@ -48,7 +48,7 @@
 					<mm_row>
 						<mm_col width="100">
 							<mm_card>
-								<div class="card_body">
+								<div class="card_body pa">
 									选择结果：{{ value }}
 								</div>
 							</mm_card>

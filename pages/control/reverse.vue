@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_reverse">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -25,7 +25,7 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_1)">样式一</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback"></control_reverse>
 									<control_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback"></control_reverse>
 								</div>
@@ -36,7 +36,7 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_2)">样式二</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_reverse title="时间" v-model="query.orderby" :options="options_time" :func="callback" display="2"></control_reverse>
 									<control_reverse title="人气" v-model="query.orderby" :options="options_hot" :func="callback" display="2"></control_reverse>
 								</div>
@@ -44,7 +44,7 @@
 						</mm_col>
 						<mm_col width="100">
 							<mm_card>
-								<div class="card_body">排序方式 {{ query.orderby }}</div>
+								<div class="card_body pa">排序方式 {{ query.orderby }}</div>
 							</mm_card>
 						</mm_col>
 					</mm_row>

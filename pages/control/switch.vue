@@ -1,6 +1,6 @@
 <template>
-	<mm_page id="page_btn">
-		<header>
+	<mm_page id="page_switch">
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -25,7 +25,7 @@
 								<div class="card_head">PC版</div>
 								<div class="card_body">
 									<mm_view>
-										<h5 @click="$copy(code_1)">样式一</h5>
+										<h5 class="pa" @click="$copy(code_1)">样式一</h5>
 										<control_switch title="开关" v-model="value"></control_switch>
 									</mm_view>
 									<mm_view>
@@ -40,7 +40,7 @@
 								<div class="card_head">Mobile版本</div>
 								<div class="card_body">
 									<mm_view>
-										<h5 @click="$copy(code_3)">样式三</h5>
+										<h5 class="pa" @click="$copy(code_3)">样式三</h5>
 										<control_switch title="开关" v-model="value"></control_switch>
 									</mm_view>
 									<mm_view>
@@ -58,7 +58,7 @@
 					<mm_row>
 						<mm_col width="100">
 							<mm_card>
-								<div class="card_body">
+								<div class="card_body pa">
 									选择结果：{{ value }}
 								</div>
 							</mm_card>
@@ -100,5 +100,9 @@
 	}
 </script>
 
-<style>
+<style scoped="scoped">
+	#page_switch h5 {
+		padding: .5rem 1rem;
+		border-top: 1px solid var(--color_border);
+	}
 </style>

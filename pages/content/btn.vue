@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_btn">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -23,44 +23,44 @@
 						<mm_col>
 							<mm_card>
 								<div class="card_head">按钮颜色——带背景</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<mm_btn class="btn_default">默认</mm_btn>
 									<mm_btn class="btn_primary">主要</mm_btn>
 									<mm_btn class="btn_info">信息</mm_btn>
 									<mm_btn class="btn_success">成功</mm_btn>
-									<mm_btn class="btn_warning">错误</mm_btn>
-									<mm_btn class="btn_danger">警告</mm_btn>
+									<mm_btn class="btn_error">错误</mm_btn>
+									<mm_btn class="btn_warning">警告</mm_btn>
 								</div>
 							</mm_card>
 						</mm_col>
 						<mm_col>
 							<mm_card>
 								<div class="card_head">按钮——不带背景</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<mm_btn class="btn_default-x">默认</mm_btn>
 									<mm_btn class="btn_primary-x">主要</mm_btn>
 									<mm_btn class="btn_info-x">信息</mm_btn>
 									<mm_btn class="btn_success-x">成功</mm_btn>
-									<mm_btn class="btn_warning-x">错误</mm_btn>
-									<mm_btn class="btn_danger-x">警告</mm_btn>
+									<mm_btn class="btn_error-x">错误</mm_btn>
+									<mm_btn class="btn_warning-x">警告</mm_btn>
 								</div>
 							</mm_card>
 						</mm_col>
 						<mm_col>
 							<mm_card>
 								<div class="card_head">全屏宽按钮</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<mm_group>
 										<mm_btn class="btn_default">默认</mm_btn>
 									</mm_group>
 									<mm_group>
-										<mm_btn class="btn_warning">错误</mm_btn>
+										<mm_btn class="btn_error">错误</mm_btn>
 										<mm_btn class="btn_success">成功</mm_btn>
 									</mm_group>
 									<mm_group>
 										<mm_btn class="btn_primary">主要</mm_btn>
 										<mm_btn class="btn_info">信息</mm_btn>
-										<mm_btn class="btn_danger">警告</mm_btn>
+										<mm_btn class="btn_warning">警告</mm_btn>
 									</mm_group>
 								</div>
 							</mm_card>
@@ -68,18 +68,18 @@
 						<mm_col>
 							<mm_card class="btn-3">
 								<div class="card_head">全屏宽按钮圆角</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<mm_group class="b-a mtb">
 										<mm_btn class="btn_default">默认</mm_btn>
 									</mm_group>
 									<mm_group class="b-a mtb">
-										<mm_btn class="btn_warning">错误</mm_btn>
+										<mm_btn class="btn_error">错误</mm_btn>
 										<mm_btn class="btn_success">成功</mm_btn>
 									</mm_group>
 									<mm_group class="b-a mtb">
 										<mm_btn class="btn_primary">主要</mm_btn>
 										<mm_btn class="btn_info">信息</mm_btn>
-										<mm_btn class="btn_danger">警告</mm_btn>
+										<mm_btn class="btn_warning">警告</mm_btn>
 									</mm_group>
 								</div>
 							</mm_card>

@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_color">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -80,8 +80,8 @@
 <style>
 	#page_color .mm_item a {
 		display: block;
-		width: 4rem;
-		height: 4rem;
+		width: 3.5rem;
+		height: 3.5rem;
 		margin: .5rem auto;
 		border-radius: .5rem;
 	}

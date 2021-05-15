@@ -3,6 +3,7 @@ define(function() {
 
 	return {
 		data: function data() {
+			var opens = $.db.get('opens') || [0];
 			return {
 				// 标题
 				title: "",
@@ -85,7 +86,9 @@ define(function() {
 				// 修改条件
 				query_set: {},
 				// 上级ID: father_id
-				father_id: "father_id"
+				father_id: "father_id",
+				// 展开项
+				opens: opens
 			};
 		},
 		methods: {

@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_icon">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -20,7 +20,7 @@
 			<mm_warp>
 				<mm_container>
 					<mm_row>
-						<mm_col class="col-6">
+						<mm_col class="col-md-6">
 							<mm_card>
 								<div class="card_head">字体图标</div>
 								<div class="card_body">
@@ -1347,7 +1347,7 @@
 								</div>
 							</mm_card>
 						</mm_col>
-						<mm_col class="col-6">
+						<mm_col class="col-md-6">
 							<mm_card>
 								<div class="card_head">字体图标（镂空）</div>
 								<div class="card_body">
@@ -2702,5 +2702,13 @@
 	#page_icon ul {
 		list-style: none;
 		padding: 0;
+	}
+	#page_icon li {
+		float: left;
+		width: 50%;
+		padding: 0.5rem 1rem;
+	}
+	#page_icon .card_body {
+		padding: 1rem;
 	}
 </style>

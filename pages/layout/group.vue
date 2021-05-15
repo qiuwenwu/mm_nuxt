@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_group">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -23,7 +23,7 @@
 						<mm_col width="100">
 							<mm_card>
 								<div class="card_head">输入框组合</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<mm_group>
 										<input type="text" />
 										<mm_btn class="btn_success-x">按钮</mm_btn>
@@ -57,7 +57,7 @@
 						<mm_col width="100">
 							<mm_card>
 								<div class="card_head">按钮组合</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<mm_group class="group-1">
 										<mm_btn class="btn_default-x">按钮</mm_btn>
 										<mm_btn class="btn_default-x">按钮</mm_btn>

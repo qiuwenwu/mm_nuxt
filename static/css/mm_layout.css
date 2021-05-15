@@ -1,14 +1,16 @@
-[class^=item_]{
+[class^=item_] {
 	height: 100%;
 }
-[class^=item_]::before,[class^=item_]::after {
+
+[class^=item_]::before,
+[class^=item_]::after {
 	display: block;
 	content: "";
 	clear: both;
 	float: none;
 }
 
-#app, .app {
+#app {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -17,6 +19,7 @@
 
 .mm_page {
 	height: 100%;
+	overflow: auto;
 }
 
 .mm_warp {
@@ -25,26 +28,26 @@
 }
 
 main {
-	transition: all 0.5s ease-in-out;
 	min-height: 100vh;
+	transition: all 0.5s ease-in-out;
 }
 
-.mm_page>header {
+.header {
 	min-height: var(--height_big);
 	display: block;
 	position: absolute;
 	z-index: 10;
 	right: 0;
 	top: 0;
-	width: 100%;
 	transition: all 0.5s ease-in-out;
+	width: 100%;
 }
 
-.mm_page>header~main {
-	margin-top: 2.5rem;
+.header~main {
+	padding-top: 2.5rem;
 }
 
-.mm_page>footer {
+.footer {
 	min-height: var(--height_small);
 	display: block;
 	position: absolute;
@@ -53,11 +56,6 @@ main {
 	bottom: 0;
 	width: 100%;
 	transition: all 0.5s ease-in-out;
-}
-
-.mm_page>footer~main {
-	margin-bottom: 2.5rem;
-	min-height: calc(100vh - 2.5rem);
 }
 
 .mm_side .mm_warp {
@@ -174,6 +172,7 @@ footer.hide-x {
 	position: relative;
 	flex-wrap: wrap;
 	display: flex;
+	align-content: flex-start;
 	align-items: stretch;
 	justify-content: start;
 	justify-items: stretch;
@@ -190,7 +189,12 @@ footer.hide-x {
 	border-radius: var(--radius_small);
 	height: calc(100% - var(--margin_small) * 2);
 	margin: var(--margin_small);
-	overflow: hidden;
+}
+
+.mm_modal .mm_card {
+	max-width: 37.5rem;
+	margin: auto;
+	width: calc(100% - 1rem);
 }
 
 .card_head::before,
@@ -211,7 +215,7 @@ footer.hide-x {
 
 .card_head {
 	position: relative;
-	padding: var(--padding_mini) var(--padding_base);
+	padding: var(--padding_small) var(--padding_base);
 }
 
 .card_head~.card_body {
@@ -220,7 +224,6 @@ footer.hide-x {
 
 .card_foot {
 	position: relative;
-	padding: var(--padding_mini) var(--padding_base);
 }
 
 /* 列表 */
@@ -279,7 +282,8 @@ ol.mm_list li::before {
 	width: 100%;
 }
 
-.mm_item:before, .mm_item:after {
+.mm_item:before,
+.mm_item:after {
 	content: "";
 	display: block;
 	float: none;
@@ -287,11 +291,11 @@ ol.mm_list li::before {
 }
 
 .media {
-	padding: var(--padding_mini);
+	padding: var(--padding_small);
 }
 
 .doc {
-	padding: var(--padding_mini);
+	padding: var(--padding_small);
 	overflow: hidden;
 	height: 100%;
 }
@@ -300,9 +304,10 @@ ol.mm_list li::before {
 	padding-top: 0;
 }
 
-.mm_item .title{
+.mm_item .title {
 	overflow: hidden;
 }
+
 .mm_item .content {
 	overflow: hidden;
 	display: -webkit-box;
@@ -335,6 +340,7 @@ ol.mm_list li::before {
 
 .item-lr .content {
 	text-align: right;
+	line-height: 1.75;
 }
 
 .item-rl .media,
@@ -345,6 +351,10 @@ ol.mm_list li::before {
 .item-rl .title {
 	float: left;
 	margin-right: var(--margin_small);
+}
+
+.item-rl .content {
+	line-height: 1.75;
 }
 
 .item-rr .title {
@@ -391,14 +401,15 @@ ol.mm_list li::before {
 .mm_group>.unit,
 .mm_group>.title {
 	flex: inherit;
-	height: var(--height_base);
-	line-height: var(--height_base);
 	padding-left: var(--padding_base);
 	padding-right: var(--padding_base);
+	padding-top: var(--padding_mini);
+	padding-bottom: var(--padding_mini);
 	background-color: var(--color_light);
 	border: 1px solid var(--color_border);
-	font-size: 0.75rem;
+	font-size: 0.875rem;
 	text-align: center;
+	line-height: 1.75;
 }
 
 
@@ -489,6 +500,7 @@ ol.mm_list li::before {
 .info-base .mm_item .content {
 	color: var(--color_default);
 	line-height: var(--height_base);
+	margin-top: 0.25rem;
 }
 
 .info-base .mm_item .mm_grid {
@@ -537,29 +549,84 @@ ol.mm_list li::before {
 
 .table-sm td,
 .table-sm th {
-	padding: .25rem var(--padding_mini)
+	padding: var(--padding_mini) var(--padding_small);
 }
 
 
 /* ===  模态窗  === */
-.mm_modal {
-	position: fixed;
-	z-index: 30;
-	width: 100%;
-	height: 100%;
+.modal_main {
+	position: absolute;
+	z-index: 32;
+	white-space: nowrap;
+	transform: translate(0, 0);
+	transition: all 0.5s ease-in-out;
+}
+
+.from_left .modal_main {
 	top: 0;
 	left: 0;
+	height: 100%;
+	width: 12rem;
+}
+
+.from_left.hide-x .modal_main {
+	transform: translate(-100%, 0);
+}
+
+.from_right .modal_main {
+	top: 0;
 	right: 0;
+	height: 100%;
+	width: 12rem;
+}
+
+.from_right.hide-x .modal_main {
+	transform: translate(100%, 0);
+}
+
+.from_top .modal_main {
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.from_top.hide-x .modal_main {
+	transform: translate(0, -100%);
+}
+
+.from_bottom .modal_main {
 	bottom: 0;
-	transform: translate(-100%, -100%);
+	left: 0;
+	width: 100%;
 }
 
-.mm_modal .mask {
-	transition: all .2s ease-in-out;
+.from_bottom.hide-x .modal_main {
+	transform: translate(0, 100%);
 }
 
-.mm_modal.show {
-	transform: translate(0, 0);
+.from_center .modal_main {
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+}
+
+.from_center.hide-x .modal_main {
+	width: 0;
+}
+
+.from_default .modal_main {
+	top: 50%;
+	left: 50%;
+	width: 100%;
+	transform: translate(-50%, -50%);
+	overflow: hidden;
+}
+
+.from_default.hide-x .modal_main {
+	display: none;
+	opacity: 0;
 }
 
 .mm_modal .mm_body {
@@ -571,6 +638,8 @@ ol.mm_list li::before {
 	z-index: 32;
 }
 
+.from_default.hide-x {}
+
 /* 所有CSS属性都拥有过渡属性，动画持续时间3s 延迟2s触发 linear的触发函数 */
 .trans {
 	-webkit-transition: all .2s linear;
@@ -578,83 +647,6 @@ ol.mm_list li::before {
 	-ms-transition: all .2s linear;
 	-o-transition: all .2s linear;
 	transition: all .2s linear;
-}
-
-.show [class*=from_] {
-	position: absolute;
-	z-index: 40;
-	width: 100%;
-}
-
-.show .from_default {
-	max-width: 30rem;
-	min-height: 7.5rem;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%) !important;
-}
-
-.from_left {
-	top: 0;
-	bottom: 0;
-	left: 0;
-	height: 100%;
-	max-width: 18.75rem;
-	transform: translate(-100%, 0);
-}
-
-.from_right {
-	top: 0;
-	bottom: 0;
-	right: 0;
-	height: 100%;
-	max-width: 18.75rem;
-	transform: translate(100%, 0);
-}
-
-.from_top {
-	top: 0;
-	left: 0;
-	right: 0;
-	transform: translate(0, -100%);
-}
-
-.from_bottom {
-	bottom: 0;
-	left: 0;
-	right: 0;
-	transform: translate(0, 100%);
-}
-
-.from_center {
-	top: 50%;
-	left: 50%;
-	width: 25%;
-	max-width: 30rem;
-	transform: translate(-50%, -50%);
-}
-
-.show .from_left,
-.show .from_right,
-.show .from_top,
-.show .from_bottom,
-.show .from_center {
-	-webkit-transition: all .2s linear;
-	-moz-transition: all .2s linear;
-	-ms-transition: all .2s linear;
-	-o-transition: all .2s linear;
-	transition: all .2s linear;
-}
-
-.show .from_left,
-.show .from_right,
-.show .from_top,
-.show .from_bottom {
-	transform: translate(0, 0);
-}
-
-.show .from_center {
-	width: 100%;
 }
 
 .value label {
@@ -665,23 +657,13 @@ ol.mm_list li::before {
 
 .mobile .value label {
 	float: none;
-}
-
-.mm_form dt {
-	line-height: 2rem;
-}
-
-.mm_form dd {
-	line-height: 1;
+	margin-right: 0;
 }
 
 .mm_icon {
 	background: center center no-repeat;
 	background-size: 100%;
 	position: relative;
-}
-.mm_icon img{
-	width: 100%;
 }
 
 .img-auto .mm_icon {
@@ -690,6 +672,7 @@ ol.mm_list li::before {
 	height: 0;
 	padding-top: 100%;
 }
+
 .img-auto .img {
 	position: absolute;
 	top: 0;

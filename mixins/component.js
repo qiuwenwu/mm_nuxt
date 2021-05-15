@@ -28,8 +28,8 @@ export default {
 			}
 		},
 		col: {
-			type: String,
-			default: ""
+			type: Number,
+			default: 3
 		},
 		vm: {
 			type: Object,

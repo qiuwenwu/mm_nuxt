@@ -6,7 +6,7 @@
       </div>
       <div class="windows_body">
         <div class="bag_grid">
-          <mm_list col="3">
+          <mm_list :col="3">
             <mm_item v-for="(o, i) in 12" :key="'bag_grid_' + i">
               <div class="item_tool">
                 <div class="nft">

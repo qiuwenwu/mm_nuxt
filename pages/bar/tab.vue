@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_tab">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>

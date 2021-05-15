@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_chat">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -39,46 +39,46 @@
 				col: 2,
 				options: [{
 						name: "1列",
-						value: "1"
+						value: 1
 					},
 					{
 						name: "2列",
-						value: "2"
+						value: 2
 					},
 					{
 						name: "3列",
-						value: "3"
+						value: 3
 					},
 					{
 						name: "4列",
-						value: "4"
+						value: 4
 					},
 					{
 						name: "5列",
-						value: "5"
+						value: 5
 					},
 					{
 						name: "6列",
-						value: "6"
+						value: 6
 					},
 					{
 						name: "8列",
-						value: "8"
+						value: 8
 					},
 					{
 						name: "10列",
-						value: "10"
+						value: 10
 					},
 					{
 						name: "12列",
-						value: "12"
+						value: 12
 					}
 				],
 				list: undefined
 			}
 		},
-		methods:{
-			func_buy(o){
+		methods: {
+			func_buy(o) {
 				console.log(o)
 			}
 		}

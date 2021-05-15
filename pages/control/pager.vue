@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_pager">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -25,7 +25,7 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_1)">样式一</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_pager v-model="query.page" :count="count / query.size" :func="goTo"></control_pager>
 								</div>
 							</mm_card>
@@ -35,7 +35,7 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_2)">样式二</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_pager class="control_pager-x" v-model="query.page" :count="count / query.size" :func="goTo"></control_pager>
 								</div>
 							</mm_card>
@@ -45,7 +45,7 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_3)">样式三</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo"></control_pager>
 								</div>
 							</mm_card>
@@ -55,14 +55,14 @@
 								<div class="card_head">
 									<h5 @click="$copy(code_4)">样式四</h5>
 								</div>
-								<div class="card_body">
+								<div class="card_body pa">
 									<control_pager display="2" v-model="query.page" :count="count / query.size" :func="goTo" :icons="['首页', '上一页', '下一页', '尾页']"></control_pager>
 								</div>
 							</mm_card>
 						</mm_col>
 						<mm_col width="100">
 							<mm_card>
-								<div class="card_body">
+								<div class="card_body pa">
 									<p>当前：弟 {{ query.page }} 页</p>
 									<p>每页显示：{{ query.size }} 条</p>
 									<p>总计：{{ count }} 条</p>

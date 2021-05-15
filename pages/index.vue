@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_root" class="mobile">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -23,7 +23,7 @@
 				<mm_container>
 					<mm_row class="row-lg-3 row-md-2 row-sm-1">
 						<mm_col width="100">
-							<div class="center">基础组件</div>
+							<div class="center pt-5">基础组件</div>
 						</mm_col>
 						<mm_col>
 							<mm_card>

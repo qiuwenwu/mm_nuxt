@@ -1,7 +1,7 @@
 <template>
 	<!-- 图片 -->
 	<mm_page id="page_image">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -23,7 +23,7 @@
 					<mm_row>
 						<mm_col width="100">
 							<mm_view>
-								<control_select v-model="col" :options="options"></control_select>
+								<control_select v-model.number="col" :options="options"></control_select>
 								<mm_btn class="btn_primary" @click.native="set_layout()">切换排版方式</mm_btn>
 								<button class="btn_primary" @click="border = !border">
 									<span v-if="border">无</span>

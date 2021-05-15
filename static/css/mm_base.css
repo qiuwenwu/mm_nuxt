@@ -185,8 +185,8 @@
 	--col_larger: 1.5rem;
 
 	/* 填充 */
-	--padding_mini: 0.5rem;
-	--padding_small: 0.75rem;
+	--padding_mini: 0.25rem;
+	--padding_small: 0.5rem;
 	--padding_base: 1rem;
 	--padding_big: 1.25rem;
 	--padding_larger: 1.5rem;
@@ -230,12 +230,17 @@
 }
 
 html {
+	height: 100%;
+	overflow: hidden;
 	font-family: "Helvetica Neue", helvetica, arial, sans-serif;
 	line-height: 1.5;
 }
 
 body {
+	height: 100vh;
+	color: var(--color_base);
 	line-height: 1.5;
+	overflow: hidden;
 }
 
 /** 不可见元素 **/
@@ -349,6 +354,7 @@ table {
 	border-collapse: collapse;
 	border-radius: var(--radius_small);
 	width: 100%;
+	border-spacing: 0;
 }
 
 nav {
@@ -413,11 +419,10 @@ input[type=time],
 input[type=datetime-local],
 input[type=month],
 input[type=week] {
-	height: var(--height_base);
-	line-height: calc(var(--height_base) - 2px);
 	border-radius: var(--radius_small);
 	border: 1px solid var(--color_border);
 	padding-left: var(--padding_small);
+	min-height: var(--height_base);
 }
 
 input[type=text],
@@ -460,16 +465,14 @@ select {
 	text-transform: none;
 	cursor: pointer;
 	border: 1px solid var(--color_border);
-	height: var(--height_base);
-	line-height: var(--height_base);
-	padding-left: var(--padding_small);
-	padding-right: var(--padding_small);
+	padding: var(--padding_mini) var(--padding_small);
 	border-radius: var(--radius_small);
 }
 
 button {
 	-webkit-appearance: button;
 	display: inline-block;
+	line-height: 1.5;
 }
 
 [type=button],
@@ -567,7 +570,7 @@ dd>span {
 
 dd {
 	display: block;
-	padding: var(--padding_mini);
+	padding: var(--padding_small);
 	float: left;
 }
 
@@ -580,8 +583,7 @@ ul {
 	padding-left: 1.25rem;
 }
 
-dl,
-dd {
+dl {
 	display: block;
 }
 

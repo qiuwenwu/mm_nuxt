@@ -1,7 +1,7 @@
 <template>
 	<!-- 视频 -->
 	<mm_page id="page_video">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -23,7 +23,7 @@
 					<mm_row>
 						<mm_col width="100">
 							<mm_view>
-								<control_select v-model="col" :options="options"></control_select>
+								<control_select v-model.number="col" :options="options"></control_select>
 								<mm_btn class="btn_primary" @click.native="set_layout()">切换排版方式</mm_btn>
 							</mm_view>
 						</mm_col>
@@ -53,39 +53,39 @@
 				],
 				options: [{
 						name: "1列",
-						value: "1"
+						value: 1
 					},
 					{
 						name: "2列",
-						value: "2"
+						value: 2
 					},
 					{
 						name: "3列",
-						value: "3"
+						value: 3
 					},
 					{
 						name: "4列",
-						value: "4"
+						value: 4
 					},
 					{
 						name: "5列",
-						value: "5"
+						value: 5
 					},
 					{
 						name: "6列",
-						value: "6"
+						value: 6
 					},
 					{
 						name: "8列",
-						value: "8"
+						value: 8
 					},
 					{
 						name: "10列",
-						value: "10"
+						value: 10
 					},
 					{
 						name: "12列",
-						value: "12"
+						value: 12
 					}
 				],
 				list: undefined
