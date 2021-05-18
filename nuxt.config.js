@@ -52,6 +52,10 @@ export default {
       },
       {
         rel: 'stylesheet',
+        href: '/css/mm_expand.css'
+      },
+      {
+        rel: 'stylesheet',
         href: '/css/mm_component.css'
       },
       {
@@ -78,6 +82,22 @@ export default {
         rel: 'stylesheet',
         href: '/css/mm_theme.css'
       }
+    ],
+    script: [{
+        src: '/js/jquery.min.js'
+      },
+      {
+        src: '/js/mm_jquery_expand.js'
+      },
+      {
+        src: '/js/clipboard.min.js'
+      },
+      {
+        src: '/js/mm_expand_ui.js'
+      },
+      {
+        src: '/js/qrcode.min.js'
+      }
     ]
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -92,10 +112,10 @@ export default {
     '@/plugins/mm_sdk',
     '@/plugins/lang',
     '@/plugins/component',
-    {
-      src: '@/plugins/commom.js',
-      ssr: false
-    }
+    // {
+    //   src: '@/plugins/commom.js',
+    //   ssr: false
+    // }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
