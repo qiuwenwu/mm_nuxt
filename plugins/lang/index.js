@@ -1,9 +1,9 @@
 import Vue from "vue";
-import en from "./lang/en.js";
-import zh from "./lang/zh.js";
-import hk from "./lang/hk.js";
-import jp from "./lang/jp.js";
-import ko from "./lang/ko.js";
+import en from "./en.js";
+import zh from "./zh.js";
+import hk from "./hk.js";
+import jp from "./jp.js";
+import ko from "./ko.js";
 
 Vue.prototype.$lang = {
   en,

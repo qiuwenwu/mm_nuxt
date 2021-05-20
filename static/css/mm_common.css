@@ -361,10 +361,11 @@
 }
 
 @media (min-width:576px) {
-
 	.container,
 	.container-sm {
-		max-width: 33.75rem
+		max-width: 33.75rem;
+		margin-right: auto;
+		margin-left: auto;
 	}
 }
 

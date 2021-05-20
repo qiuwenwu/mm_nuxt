@@ -98,9 +98,20 @@ import swiper_text from '@/components/mm/swiper/swiper_text.vue';
 import table_coin from '@/components/mm/table/table_coin.vue';
 import table_stock from '@/components/mm/table/table_stock.vue';
 
-// 表格
+// 图表
+import chart_bar from '@/components/mm/chart/chart_bar.vue';
+import chart_depth from '@/components/mm/chart/chart_depth.vue';
+import chart_k from '@/components/mm/chart/chart_k.vue';
+import chart_line from '@/components/mm/chart/chart_line.vue';
+import chart_panel from '@/components/mm/chart/chart_panel.vue';
+import chart_pie from '@/components/mm/chart/chart_pie.vue';
+
+// 拓展
 import expand_drag from '@/components/mm/expand/expand_drag.vue';
 import expand_sptite from '@/components/mm/expand/expand_sptite.vue';
+import expand_pay from '@/components/mm/expand/expand_pay.vue';
+import expand_pre from '@/components/mm/expand/expand_pre.vue';
+import expand_qrcode from '@/components/mm/expand/expand_qrcode.vue';
 
 /* === 创建全局组件 === */
 export default {
@@ -194,7 +205,7 @@ export default {
         };
       }
     );
-	
+
     // 栏目组件
     Vue.component('bar_action', bar_action);
     Vue.component('bar_ad', bar_ad);
@@ -290,10 +301,18 @@ export default {
     Vue.component('swiper_vertical_page', swiper_vertical_page);
     Vue.component('swiper_text', swiper_text);
 
-    //  拓展
+    // 图表
+    Vue.component('chart_bar', chart_bar);
+    Vue.component('chart_depth', chart_depth);
+    Vue.component('chart_k', chart_k);
+    Vue.component('chart_line', chart_line);
+    Vue.component('chart_panel', chart_panel);
+    Vue.component('chart_pie', chart_pie);
 
+    //  拓展
     Vue.component('expand_drag', expand_drag);
     Vue.component('expand_sptite', expand_sptite);
-
+    Vue.component('expand_qrcode', expand_qrcode);
+    Vue.component('expand_pre', expand_pre);
   }
 }

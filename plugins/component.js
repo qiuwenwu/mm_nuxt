@@ -1,6 +1,6 @@
 import Vue from 'vue'
-import mm_vue_ui from './mm_vue_ui.js'
-import mm_component from './mm_component.js'
+import mm_vue_ui from './mm_vue_ui.js';
+import mm_component from './mm_component.js';
 import Swiper from './swiper.min.js'
 import VueHighlightJS from 'vue-highlightjs';
 
@@ -17,8 +17,9 @@ var Plugin = {
     Vue.use(mm_vue_ui, optons);
     Vue.use(mm_component, optons);
     Vue.use(VueHighlightJS);
+
     Vue.prototype.$Swiper = Swiper;
-    Vue.prototype.$copy = function(text){
+    Vue.prototype.$copy = function(text) {
       $.copyText(text);
       $.toast("复制成功！");
     };

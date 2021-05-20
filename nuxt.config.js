@@ -97,6 +97,9 @@ export default {
       },
       {
         src: '/js/qrcode.min.js'
+      },
+      {
+        src: '/js/echarts.js'
       }
     ]
   },

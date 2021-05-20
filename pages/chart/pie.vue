@@ -1,6 +1,6 @@
 <template>
 	<mm_page id="page_chat">
-		<header class="header">
+		<header>
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -21,6 +21,10 @@
 				<mm_container>
 					<mm_row>
 						<mm_col width="100">
+							<mm_view>
+								<chart_pie id="chartPie" title="饼状图" :list="list" type="参数">
+								</chart_pie>
+							</mm_view>
 						</mm_col>
 					</mm_row>
 				</mm_container>
@@ -32,10 +36,25 @@
 <script>
 	export default {
 		data() {
-			return {}
+			return {
+				list: [{
+						name: "参数1",
+						value: 1000
+					}, {
+						name: "参数2",
+						value: 123
+					}, {
+						name: "参数3",
+						value: 10
+					}, {
+						name: "参数4",
+						value: 123
+					}
+
+				]
+			}
 		},
-		methods: {
-		}
+		methods: {}
 	}
 </script>
 
