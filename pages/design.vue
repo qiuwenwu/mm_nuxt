@@ -1,7 +1,7 @@
 <template>
 	<!-- 文章 -->
 	<mm_page id="page_design">
-		<header class="header">
+		<header>
 			<mm_warp>
 				<mm_container>
 					<mm_row>
@@ -201,6 +201,10 @@
 
 	#page_design .mm_view>h5 {
 		margin-bottom: 1rem;
+	}
+
+	#page_design table {
+		width: 100%;
 	}
 
 	#page_design td:last-child {

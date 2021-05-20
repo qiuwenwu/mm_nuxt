@@ -25,6 +25,7 @@
               <mm_view>
                 <control_select v-model.number="col" :options="options"></control_select>
                 <mm_btn class="btn_primary" @click.native="set_layout()">切换排版方式</mm_btn>
+                <button class="btn_primary fr" @click="show1 = true">显示代码</button>
               </mm_view>
             </mm_col>
             <mm_col width="100">
@@ -37,6 +38,25 @@
         </mm_container>
       </mm_warp>
     </main>
+    <mm_modal v-model="show1" mask="true" display="center">
+      <mm_card>
+        <div class="card_head">
+          <span>html</span>
+        </div>
+        <div class="card_body">
+          <expand_pre :code="code1"><code class="html"></code></expand_pre>
+        </div>
+        <div class="card_body">
+          <span>javascript</span>
+        </div>
+        <div class="card_body">
+          <expand_pre :code="js1"><code class="javascript"></code></expand_pre>
+        </div>
+        <div class="card_foot">
+          <mm_group><button class="btn_primary fr" @click="show1 = false">关闭代码</button></mm_group>
+        </div>
+      </mm_card>
+    </mm_modal>
   </mm_page>
 </template>
 
@@ -44,6 +64,32 @@
   export default {
     data() {
       return {
+        show1: false,
+        code1: `//-lr左右，-ll左左，--ltb左上下。img-参数【small=>小图标】
+由小到大为mini，small，base，big，larger，huge
+<list_video :col="col" :list="list" :class="'list-x ' + list_layout[select]"></list_video>`,
+        js1: `export default {
+	data(){
+	list_layout: [
+	  "item-tb",
+	  "item-ltb img-larger",
+	  "item-rtb img-larger",
+	],
+	list: [{
+		id: 1,
+		image: "/img/default.png",
+		label:"更新到14集",
+		tag:"vip",
+		score:"9.8",
+		name: "视频名称1",
+		description: "这是一个视频的描述，主要用于排版演示这是一个视频的描述",
+		num_see:1000,
+		num_comment:20,
+		time:"2021-04-22",
+		url: "/"
+	},
+	}
+}`,
         select: 1,
         col: 2,
         list_layout: [
