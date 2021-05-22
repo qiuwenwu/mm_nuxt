@@ -664,6 +664,7 @@ ol.mm_list li::before {
 	background: center center no-repeat;
 	background-size: 100%;
 	position: relative;
+	width: fit-content;
 }
 
 .img-auto .mm_icon {

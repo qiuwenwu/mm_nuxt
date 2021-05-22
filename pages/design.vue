@@ -1,7 +1,7 @@
 <template>
 	<!-- 文章 -->
 	<mm_page id="page_design">
-		<header>
+		<header class="header">
 			<mm_warp>
 				<mm_container>
 					<mm_row>

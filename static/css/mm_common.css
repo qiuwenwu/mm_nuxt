@@ -2456,11 +2456,11 @@
 }
 
 /** 图片 **/
-.icon-radius figure {
+.icon-radius .mm_icon {
 	border-radius: 0.5rem;
 }
 
-.icon-x figure {
+.icon-x .mm_icon {
 	border: 1px solid rgba(125, 125, 125, 0.25);
 	padding: .5rem;
 	background: #fff !important;

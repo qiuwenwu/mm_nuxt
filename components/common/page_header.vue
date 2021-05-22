@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="header">
     <div class="warp">
       <el-row>
         <el-col :span="8">

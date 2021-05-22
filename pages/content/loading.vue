@@ -1,7 +1,7 @@
 <template>
   <mm_page id="page_loading">
     <!-- 页头 -->
-    <header>
+    <header class="header">
       <mm_warp>
         <mm_container>
           <mm_row>
